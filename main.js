@@ -16,4 +16,27 @@ recognition.onresult = function (event) {
 
     document.getElementById("textarea").innerHTML = Content;
     console.log(Content); 
+
+    speak();
 }
+
+function speak()
+{
+    var synth = window.speechSynthesis;
+
+    speak_data = document.getElementById("textarea").value;
+
+    var utterThis = new SpeechSynthesisUtterance(speak_data);
+
+    synth.speak(utterThis);
+
+    Webcam.attach(camera);
+}
+
+camera = document.getElementById("camera");
+Webcam.set({
+    width:360,
+    height:250,
+    image_format : 'png',
+    png_quality : 90
+});
